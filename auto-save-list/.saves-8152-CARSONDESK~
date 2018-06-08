@@ -1,0 +1,12 @@
+u:/Directory/Documents/Facilities.txt
+u:\Directory\Documents\#Facilities.txt#
+u:/Directory/Documents/free-writing.txt
+u:\Directory\Documents\#free-writing.txt#
+u:/Directory/test-file.el
+u:\Directory\#test-file.el#
+u:/Directory/Programs/.emacs.d/init.el
+u:\Directory\Programs\.emacs.d\#init.el#
+u:/Directory/misc-notes.txt
+u:\Directory\#misc-notes.txt#
+u:/Directory/containers-py.notes
+u:\Directory\#containers-py.notes#
