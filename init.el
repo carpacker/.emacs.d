@@ -1,6 +1,6 @@
 ;; Carson Packer
-;; init.el
-
+   ;; init.el
+;;; Top level initialization file for emacs
 
 ;; Load paths 
 (add-to-list 'load-path "~/.emacs.d/lisp")
@@ -25,19 +25,29 @@
 (package-initialize)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(require 'monokai-theme)
-
-; Custom sets: added automatically, don't edit by hand
+;; Custom sets: added automatically, don't edit by hand
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
  '(package-selected-packages
    (quote
-    (company-jedi elpy monokai-theme org-agenda-property use-package))))
+    (font-lock-studio jedi elpygen company-jedi elpy monokai-theme org-agenda-property use-package))))
 (custom-set-faces
- )
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((((class color) (min-colors 257)) (:foreground "#F8F8F2" :background "#272822" :family "Consolas" :foundry "outline" :slant normal :weight normal :height 98 :width normal)) (((class color) (min-colors 89)) (:foreground "#F5F5F5" :background "#1B1E1C" :family "Consolas" :foundry "outline" :slant normal :weight normal :height 98 :width normal))))
+ '(font-lock-function-name-face ((t (:foreground "#A6E22E"))))
+ '(font-lock-variable-name-face ((t (:foreground "lavender")))))
 
+			
 ;;;;;;;;;;;;;
 
-;; I don't know yet
+;; Add packages to list
 (unless (assoc-default "melpa" package-archives)
   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t))
 (unless (assoc-default "org" package-archives)
@@ -50,10 +60,13 @@
 
 ;; Load lisp directory
 (setq active-directory-files (list "~/.emacs.d/lisp/"))
+
+;; Not sure yet
 (defun active-config-directory ()
   "Where active package configurations are kept."
   (format "%slisp/" user-emacs-directory))
 
+;; Note sure yet
 (defun load-use-file (name)
   "Load a use file NAME expect an error if it doesn't map to an existing file."
   (let (file)
@@ -64,9 +77,37 @@
           (load-file file)
         (message "Warning: %s doesn't exist" file)))))
 
+;; Load each lisp file to be executed
 (dolist (use-file
          (directory-files (active-config-directory)))
-(load-use-file use-file))
+  (load-use-file use-file))
 
-
-
+;; Add custom hooks, move elsewhere in a bit:
+;; Last to do:
+;; 20.0 formats the . to purple
+;; final keywords like >=, >, <=, <, /, * and so on, @, &, %, ^
+;; Tuple and list brackets colore dto differentiate
+;; Color initialize strings/ints based on type for convinience
+(defface test-defaults
+  '(( t :foreground "white"))
+  "test face."
+  :group 'python-mode)
+(defvar test-defaults 'test-defaults)
+(defface function-name
+  '((t :foreground "#FD971F"))
+  "Intended function name face."
+  :group 'python-mode)
+(defvar function-name 'function-name)
+;; Gotta do: class name, class inputs, fix comma workaround,
+(add-hook 'python-mode-hook
+	  (lambda()
+	    (font-lock-add-keywords nil
+				    '(("def\\|class" 0
+				       font-lock-type-face append)
+				      ("\\+\\|-\\|=\\|%\\|@\\|\\^\\|&\\|\\*\\|>\\|<\\|\\\\" 0 font-lock-builtin-face append)
+				      ("\\([[:word:]]\\|_\\)+\\(?5:,\\)" 5 test-defaults)
+				      ("\\_<def[[:space:]]+\\(\\(?2:[[:word:]]\\|_\\)+\\)(\\(?5:\\([[:word:]]\\|_\\)+\\(,[[:space:]]\\([[:word:]]\\|_\\)+\\)*\\)" 5  function-name append)
+				      ("\\_<class[[:space:]]+\\(\\(?:[[:word:]]\\|_\\)+\\)(\\(?5:\\([[:word:]]\\|_\\)+\\(,[[:space:]]\\([[:word:]]\\|_\\)+\\)*\\)" 5  font-lock-function-name-face append)
+				      ("\\([[:digit:]]+\\|[[:digit:]]+\\.[[:digit:]]+\\)" 0 font-lock-constant-face append)
+				      ("\\_<\\(def\\|class\\)[[:space:]]\\(?3:\\([[:word:]]\\|_\\)+\\)" 3 font-lock-function-name-face append)
+				      ("\\(?3:\\([[:word:]]\\|_\\)+\\)(" 3 font-lock-type-face append)))))

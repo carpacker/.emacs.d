@@ -1,0 +1,32 @@
+## Carson Packer
+## 6/11/18
+This document will contain notes on future features to be implemented. It is broken up into 'immediate' features, those which would be most appropiate if handled as soon as possible and 'future' which contain all planned features in no particular order. The immediate section has its own to-do list, since the list of features is relatively short. As this list is expanded, each future item [where it is appropiate] will have its own to-do list. The goal is to customize emacs and provide it with powerful editing and management features.
+
+# IMMEDIATE:
+- Change hotkeys to more convenient hotkeys
+  + M-d into M-k [kill word up until buffer moving forward] for consistency
+  + M-<DEL> into something-k [same but other direction
+  + Copy paste to more intuitive keys
+  + 
+- Fix syntax highlighting
+  + Create or edit python mode
+  + function names to BLUE (if it is followed by parentheses)
+  + def/class to BLUE
+  + FUNCTION INPUTS to ORANGE (where def *(...) exists)
+  
+- Add column number mode
+- hl-line-mode (?)
+- toggle automatic display of the size of buffer
+- Add or remove (windmove-default-keybindings)
+- Add python functionality
+  + Elpy
+  + Jedi
+- Add/use python terminal in emacs
+- Add autofill mode (wraps after certain line number is reached)
+- Learn selection techniques
+
+# FUTURE
+- Automatic creation and management of note text document for each python file, for example containers.py has containers-notes.txt
+- Automated management of to-do org documents
+- Automated management of daily scratch files
+- Dynamically set theme(?) 

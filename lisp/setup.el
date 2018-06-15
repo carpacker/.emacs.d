@@ -11,12 +11,20 @@
 ;; Theme - current is MONOKAI
 (load-theme 'monokai t)
 
+;; Font - consolas
+(set-frame-font "Consolas" nil t)
+
+;; set-goal-column : ???
+(put 'set-goal-column 'disabled nil)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; DEFAULT MINOR MODES ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;; Line number mode, sets line numbers on the left hand side globally 
 (global-linum-mode 1)
+(global-hl-line-mode 1)
+
 ;; Not sure what this does yet
 (transient-mark-mode 1)
 
