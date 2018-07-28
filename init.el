@@ -111,3 +111,6 @@
 				      ("\\([[:digit:]]+\\|[[:digit:]]+\\.[[:digit:]]+\\)" 0 font-lock-constant-face append)
 				      ("\\_<\\(def\\|class\\)[[:space:]]\\(?3:\\([[:word:]]\\|_\\)+\\)" 3 font-lock-function-name-face append)
 				      ("\\(?3:\\([[:word:]]\\|_\\)+\\)(" 3 font-lock-type-face append)))))
+
+;; Move elsewhere
+(setq default-directory "U:/Directory/")
