@@ -1,7 +1,6 @@
 ;; Carson Packer
-   ;; init.el
+;; init.el
 ;;; Top level initialization file for emacs
-
 ;; Load paths 
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/themes")
@@ -32,9 +31,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
+ '(org-agenda-files (quote ("C:/users/carson/dropbox/Planner")))
  '(package-selected-packages
    (quote
-    (font-lock-studio jedi elpygen company-jedi elpy monokai-theme org-agenda-property use-package))))
+    (org-bullets font-lock-studio jedi elpygen company-jedi elpy monokai-theme org-agenda-property use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
