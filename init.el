@@ -31,10 +31,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
- '(org-agenda-files (quote ("C:/users/carson/dropbox/Planner")))
+ '(org-agenda-files
+   (quote
+    ("c:/Users/Carson/Dropbox/Planner/Syllabi/syllabus.org" "C:/users/carson/dropbox/Planner/habits.org" "C:/users/carson/dropbox/Planner/main.org" "C:/users/carson/dropbox/Planner/schedule.org")))
  '(package-selected-packages
    (quote
-    (org-bullets font-lock-studio jedi elpygen company-jedi elpy monokai-theme org-agenda-property use-package))))
+    (auctex org-bullets font-lock-studio jedi elpygen company-jedi elpy monokai-theme org-agenda-property use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -98,6 +100,7 @@
   "Intended function name face."
   :group 'python-mode)
 (defvar function-name 'function-name)
+
 ;; Gotta do: class name, class inputs, fix comma workaround,
 (add-hook 'python-mode-hook
 	  (lambda()
@@ -112,5 +115,54 @@
 				      ("\\_<\\(def\\|class\\)[[:space:]]\\(?3:\\([[:word:]]\\|_\\)+\\)" 3 font-lock-function-name-face append)
 				      ("\\(?3:\\([[:word:]]\\|_\\)+\\)(" 3 font-lock-type-face append)))))
 
-;; Move elsewhere
-(setq default-directory "U:/Directory/")
+;; Move this
+;; Ident defaults
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
+
+
+;; Tentative (color theme rotation, possibly add monokai too) 
+;; (require 'color-theme)
+;; (setq color-theme-is-global t)
+;; (color-theme-initialize)
+
+;(load "color-theme-colorful-obsolescence")
+;(load "color-theme-zenburn")
+;(load "color-theme-tangotango")
+;(load "color-theme-railscast")
+;(load "color-theme-leuven")
+;(load "color-theme-folio")
+;(load "color-theme-zenash")
+(;load "color-theme-manoj")
+
+;(setq my-color-themes (list
+;  'color-theme-tangotango
+;  'color-theme-colorful-obsolescence 'color-theme-zenburn
+;  'color-theme-leuven 'color-theme-folio 
+;  'color-theme-manoj 'color-theme-zenash
+;  'color-theme-railscast
+;))
+
+;(defun my-theme-set-default () ; Set the first row
+;      (interactive)
+;      (setq theme-current my-color-themes)
+;      (funcall (car theme-current)))
+     
+;    (defun my-describe-theme () ; Show the current theme
+;      (interactive)
+;      (message "%s" (car theme-current)))
+     
+   ; Set the next theme (fixed by Chris Webber - tanks)
+;    (defun my-theme-cycle ()            
+;      (interactive)
+;      (setq theme-current (cdr theme-current))
+;      (if (null theme-current)
+;      (setq theme-current my-color-themes))
+;      (funcall (car theme-current))
+;      (message "%S" (car theme-current)))
+;    
+;    (setq theme-current my-color-themes)
+;    (setq color-theme-is-global nil) ; Initialization
+;    (my-theme-set-default)
+;    (global-set-key [f4] 'my-theme-cycle)

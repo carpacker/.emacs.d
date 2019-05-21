@@ -2,8 +2,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; INITIAL SET UP ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Initial buffer - TODO
-;; (setq initial-buffer-chose string-here)
+;; Initial buffer -
+(setq initial-buffer-choice "C:/users/carson/dropbox/planner/main.org")
 
 ;; Theme - current is MONOKAI
 (load-theme 'monokai t)
@@ -17,27 +17,26 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; DEFAULT MINOR MODES ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Line number mode, sets line numbers on the left hand side globally 
+
+;; Line number mode ::  sets line numbers on the left hand side globally.
 (global-linum-mode 0)
 (global-hl-line-mode 1)
-;; TODO Not sure what this does yet
+
+;; transient-mark-mode :: provides highlighting behavior.
 (transient-mark-mode 1)
-(auto-fill-mode 1)
 
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; DEFAULT VARIABLES ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; inhibit-stratup-screen TRUE ::  don't display initial startup screen
+;; inhibit-startup-screen TRUE ::  don't display initial startup screen.
 (setq inhibit-startup-screen t)
+
 ;; backup-directory-alist :: Change backup directory to one directory. Future will be implemented
 ;;  dynamically. Backs up by copying.
 (setq backup-directory-alist '(("." . "~/.saves")))
 (setq backup-by-copy t)
 
-;; Possibly add in later: delete-old-versions
-;(setq delete-old-versions t
-;  kept-new-versions 6
-;  kept-old-versions 2
-;  version-control t)
+;; default-directory :: Change the default directory for navigation.
+(setq default-directory "U:/Directory/")
